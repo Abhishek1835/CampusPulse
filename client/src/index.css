@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm Cream + Nature Glass (Light Theme - Default) */
+    --bg-base: #F6F0E4;
+    --bg-soft: #EFE6D3;
+    --surface-glass: rgba(255, 252, 245, 0.58);
+    --surface-glass-strong: rgba(255, 252, 245, 0.82);
+    --border-glass: rgba(255, 255, 255, 0.72);
+    --border-glass-subtle: rgba(120, 100, 70, 0.14);
+    --primary: #5F7F5B;
+    --primary-hover: #4C6A49;
+    --primary-soft: #DCE6D2;
+    --accent: #C9895A;
+    --accent-hover: #B57547;
+    --accent-soft: #F0D9C4;
+    --gold: #D8B168;
+    --gold-soft: #F7E8C8;
+    --text-main: #2F3A2C;
+    --text-muted: #6F7565;
+    --success: #6E9A62;
+    --warning: #D9A441;
+    --danger: #B9573F;
+    --shadow-warm: 0 10px 30px rgba(95, 80, 55, 0.08), 0 2px 8px rgba(95, 80, 55, 0.04);
+    --shadow-glass: 0 8px 30px rgba(95, 80, 55, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+
+  .dark {
+    /* Deep Forest Night (Dark Theme) */
+    --bg-base: #1C211B;
+    --bg-soft: #242B22;
+    --surface-glass: rgba(46, 55, 43, 0.58);
+    --surface-glass-strong: rgba(46, 55, 43, 0.82);
+    --border-glass: rgba(255, 255, 255, 0.14);
+    --border-glass-subtle: rgba(140, 160, 130, 0.14);
+    --primary: #9DBB8F;
+    --primary-hover: #85A677;
+    --primary-soft: #2F3D2C;
+    --accent: #D9A074;
+    --accent-hover: #C58B5E;
+    --accent-soft: #473223;
+    --gold: #E5C27E;
+    --gold-soft: #382D16;
+    --text-main: #EFE9DA;
+    --text-muted: #A9AF9C;
+    --success: #85AF78;
+    --warning: #E2B356;
+    --danger: #CF6D55;
+    --shadow-warm: 0 10px 32px rgba(0, 0, 0, 0.35);
+    --shadow-glass: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: var(--primary-soft);
+    color: var(--text-main);
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Glassmorphism Design System */
+.glass-panel {
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background-color: var(--surface-glass);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-panel-strong {
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  background-color: var(--surface-glass-strong);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-warm);
+}
+
+.glass-input {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: var(--surface-glass-strong);
+  border: 1px solid var(--border-glass-subtle);
+  color: var(--text-main);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(95, 127, 91, 0.18);
+}
+
+.dark .glass-input:focus {
+  box-shadow: 0 0 0 3px rgba(157, 187, 143, 0.22);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-panel,
+  .glass-panel-strong {
+    background-color: rgba(246, 240, 228, 0.95);
+  }
+  .dark .glass-panel,
+  .dark .glass-panel-strong {
+    background-color: rgba(28, 33, 27, 0.95);
+  }
+}
+
+/* Custom Botanical / Earthy Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(111, 117, 101, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(111, 117, 101, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(169, 175, 156, 0.25);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(169, 175, 156, 0.45);
+}
